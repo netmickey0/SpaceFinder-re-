@@ -74,4 +74,13 @@
         #{GP_Runtime}, #{GP_content}, #{GP_image}, #{GP_restday}, #{GP_parking})
 </insert>
 
+<!-- 주차장 목록 --> 
+<select id="gplist" resultType="com.shopping.domain.GoodPVO">
+ select
+  GP_id, userId, GP_name, GP_lat, GP_long,
+       GP_Runtime, GP_content, GP_image, GP_restday, GP_parking
+    from GOODPLACE
+        order by GP_id desc
+</select>
+
 </mapper>

@@ -29,4 +29,8 @@ public interface AdminDAO {
 	
 	//주차장 등록
 	public void GP_reg(GoodPVO vo) throws Exception;
+	
+	// 주차장 목록
+	public List<GoodPVO> gplist() throws Exception;
+	
 }

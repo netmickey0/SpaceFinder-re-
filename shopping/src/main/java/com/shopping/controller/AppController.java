@@ -1,5 +1,6 @@
 package com.shopping.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shopping.domain.GoodPVO;
 import com.shopping.domain.MemberVO;
+import com.shopping.service.AdminService;
 import com.shopping.service.MemberService;
 
 /*안드로이드 통신관련*/
@@ -23,12 +26,31 @@ import com.shopping.service.MemberService;
 public class AppController{
 	
 	@Inject
-	MemberService service;
+	MemberService member_service;
+	
+	@Inject
+	AdminService admin_service;
 	
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
 	
 	//게시글 조회
+	@ResponseBody
+	   @RequestMapping(value="/showparking",produces="application/json;charset=utf-8")
+	   public Map<String, Object> showparking() {
+	      ArrayList<GoodPVO> list = null;
+		try {
+			list = (ArrayList<GoodPVO>) admin_service.gplist();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      map.put("parkinglist",list);
+
+	      return map;
+	   }
+	
 	
 	// 아이디 중복 체크
 		@ResponseBody
@@ -38,7 +60,7 @@ public class AppController{
 			
 			System.out.println(userId);
 			
-			MemberVO idChk = service.idChk(userId);
+			MemberVO idChk = member_service.idChk(userId);
 			
 			
 			
@@ -76,7 +98,7 @@ public class AppController{
 	 	String result = "실패";
 	 	
 	 	try {
-			service.signup(vo);
+	 		member_service.signup(vo);
 			result = "성공";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -102,7 +124,7 @@ public class AppController{
 		check.setUserPass(pass);
 		MemberVO login = null;
 		try {
-			 login = service.signin(check);
+			 login = member_service.signin(check);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

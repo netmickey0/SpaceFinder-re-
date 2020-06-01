@@ -160,5 +160,16 @@ public class AdminController {
 
 		return "redirect:/admin/index";
 	}
+	
+	// 주차장 목록
+		@RequestMapping(value = "/goods/gpList", method = RequestMethod.GET)
+		public void getGpList(Model model) throws Exception {
+			logger.info("get gp list");
+
+			List<GoodPVO> gplist = adminService.gplist();
+
+			model.addAttribute("gplist", gplist);
+
+		}
 
 }

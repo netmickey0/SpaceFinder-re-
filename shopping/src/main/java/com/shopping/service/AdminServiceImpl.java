@@ -62,5 +62,12 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 	
+	//주차장 목록
+	@Override
+	public List<GoodPVO> gplist() throws Exception {
+		System.out.println("주차장서비스");
+		return dao.gplist();
+	}
+	
 
 }

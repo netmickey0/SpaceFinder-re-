@@ -1,5 +1,7 @@
 package com.shopping.domain;
 
+import java.util.Date;
+
 public class GoodPVO {
 	/*
 	 * create table GoodPlace (
@@ -32,6 +34,7 @@ public class GoodPVO {
 	private String GP_click;
 	private String GP_restday;
 	private String GP_parking;
+	private Date GP_date;
 	
 	private String GP_ThumbImg;
 
@@ -129,6 +132,14 @@ public class GoodPVO {
 
 	public void setGP_parking(String gP_parking) {
 		GP_parking = gP_parking;
+	}
+
+	public Date getGP_date() {
+		return GP_date;
+	}
+
+	public void setGP_date(Date gP_date) {
+		GP_date = gP_date;
 	}
 
 	public String getGP_ThumbImg() {

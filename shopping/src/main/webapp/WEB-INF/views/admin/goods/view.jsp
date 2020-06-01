@@ -189,10 +189,7 @@ textarea#gdsDes {
 					<div class="inputArea">
 						<label for="gdsImg">이미지</label>
 						<p>원본 이미지</p>
-						<img
-							src="D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp3\wtpwebapps\shopping\resources${goods.gdsThumbImg}"
-							class="oriImg" />
-
+						<img src="${goods.gdsImg}" class="gdsImg" />
 						<p>썸네일</p>
 						<img src="${goods.gdsThumbImg}" class="thumbImg" />
 					</div>

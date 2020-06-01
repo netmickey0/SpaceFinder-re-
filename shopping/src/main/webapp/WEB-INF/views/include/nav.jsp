@@ -5,17 +5,17 @@
 <ul>
 <c:if test="${member == null}">
 	<li>
-		<a href="/shopping/member/signin">로그인</a>
+		<a href="/member/signin">로그인</a>
 	</li>
 	<li>
-		<a href="/shopping/member/signup">회원가입</a>
+		<a href="/member/signup">회원가입</a>
 	</li>
 </c:if>
 <c:if test="${member != null }">
 
 	<c:if test="${member.verify == 9 }">
 	<li>
-		<a href="/shopping/admin/index">주차장 관리자 화면</a>
+		<a href="/admin/index">주차장 관리자 화면</a>
 	</li>
 	</c:if>
 	

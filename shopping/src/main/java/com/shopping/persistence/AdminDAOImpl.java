@@ -65,5 +65,11 @@ public class AdminDAOImpl implements AdminDAO {
 		sql.insert(namespace + ".GP_reg", vo);
 		
 	}
+	
+	//주차장 목록
+	@Override
+	public List<GoodPVO> gplist() throws Exception {
+		return sql.selectList(namespace + ".gplist");
+	}
 
 }
