@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
    	<h1 class="title">
-   		<a href="/">PShop</a>
+   		<a href="/">Space Finder</a>
    	</h1>
