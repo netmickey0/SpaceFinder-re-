@@ -69,9 +69,9 @@
 <!-- 주차장 등록 -->
 <insert id="GP_reg">
  insert into GoodPlace (GP_id, userId, GP_name, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_image, GP_restday, GP_parking)
+       GP_Runtime, GP_content, GP_restday, GP_parking)
      values (GoodPlace_seq.nextval, #{userId}, #{GP_name}, #{GP_lat}, #{GP_long},
-        #{GP_Runtime}, #{GP_content}, #{GP_image}, #{GP_restday}, #{GP_parking})
+        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking})
 </insert>
 
 <!-- 주차장 목록 --> 
@@ -81,6 +81,18 @@
        GP_Runtime, GP_content, GP_image, GP_restday, GP_parking
     from GOODPLACE
         order by GP_id desc
+</select>
+
+
+<!-- 굿플 조회 -->
+<select id="gpView" resultType="com.shopping.domain.GpViewVO">
+	select
+g.GP_id, g.userId, g.GP_name, g.GP_lat, g.GP_long,
+       g.GP_Runtime, g.GP_content, g.GP_image, g.GP_restday, g.GP_parking
+         from GOODPLACE g
+<!--              inner join goods_category c -->
+<!--                  on g.cateCode = c.cateCode            -->
+            where g.GP_id = #{GP_ids}
 </select>
 
 </mapper>

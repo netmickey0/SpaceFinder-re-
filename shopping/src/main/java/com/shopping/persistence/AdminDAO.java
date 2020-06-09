@@ -6,6 +6,7 @@ import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
+import com.shopping.domain.GpViewVO;
 
 public interface AdminDAO {
 	
@@ -32,5 +33,8 @@ public interface AdminDAO {
 	
 	// 주차장 목록
 	public List<GoodPVO> gplist() throws Exception;
+	
+	// 상품조회 + 캍테고리 조인
+	public GpViewVO gpView(int GP_id) throws Exception;
 	
 }

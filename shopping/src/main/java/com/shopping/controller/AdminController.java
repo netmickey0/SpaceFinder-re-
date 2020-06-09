@@ -19,6 +19,7 @@ import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
+import com.shopping.domain.GpViewVO;
 import com.shopping.service.AdminService;
 import com.shopping.utils.UploadFileUtils;
 
@@ -152,16 +153,16 @@ public class AdminController {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
-		vo.setGP_image(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		vo.setGP_ThumbImg(
-				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+//		vo.setGP_image(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//		vo.setGP_ThumbImg(
+//				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 
 		adminService.GP_reg(vo);
 
 		return "redirect:/admin/index";
 	}
 	
-	// 주차장 목록
+		// 굿플 목록
 		@RequestMapping(value = "/goods/gpList", method = RequestMethod.GET)
 		public void getGpList(Model model) throws Exception {
 			logger.info("get gp list");
@@ -170,6 +171,15 @@ public class AdminController {
 
 			model.addAttribute("gplist", gplist);
 
+		}
+		
+		// 굿플 조회
+		@RequestMapping(value = "/goods/gpView", method = RequestMethod.GET)
+		public void getGpView(@RequestParam("n") int GP_id, Model model) throws Exception {
+			logger.info("get Gp view");
+
+			GpViewVO gpView = adminService.gpView(GP_id);
+			model.addAttribute("gpView", gpView);
 		}
 
 }

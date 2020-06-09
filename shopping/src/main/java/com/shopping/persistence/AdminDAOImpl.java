@@ -11,6 +11,7 @@ import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
+import com.shopping.domain.GpViewVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -70,6 +71,12 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<GoodPVO> gplist() throws Exception {
 		return sql.selectList(namespace + ".gplist");
+	}
+	
+	//굿플 조호
+	@Override
+	public GpViewVO gpView(int GP_id) throws Exception {
+		return sql.selectOne(namespace + ".goodsView", GP_id);
 	}
 
 }

@@ -10,6 +10,7 @@ import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
+import com.shopping.domain.GpViewVO;
 import com.shopping.persistence.AdminDAO;
 
 @Service
@@ -67,6 +68,12 @@ public class AdminServiceImpl implements AdminService {
 	public List<GoodPVO> gplist() throws Exception {
 		System.out.println("주차장서비스");
 		return dao.gplist();
+	}
+	
+	//굿플 조회
+	@Override
+	public GpViewVO gpView(int GP_id) throws Exception {
+		return dao.gpView(GP_id);
 	}
 	
 
