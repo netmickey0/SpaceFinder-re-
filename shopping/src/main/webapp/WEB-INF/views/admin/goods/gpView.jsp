@@ -138,6 +138,21 @@ textarea#gdsDes {
 }
 </style>
 
+<style>
+ section.replyForm { padding:30px 0; }
+ section.replyForm div.input_area { margin:10px 0; }
+ section.replyForm textarea { font-size:16px; font-family:'맑은 고딕', verdana; padding:10px; width:500px;; height:150px; }
+ section.replyForm button { font-size:20px; padding:5px 10px; margin:10px 0; background:#fff; border:1px solid #ccc; }
+ 
+ section.replyList { padding:30px 0; }
+ section.replyList ol { padding:0; margin:0; }
+ section.replyList ol li { padding:10px 0; border-bottom:2px solid #eee; }
+ section.replyList div.userInfo { }
+ section.replyList div.userInfo .userName { font-size:24px; font-weight:bold; }
+ section.replyList div.userInfo .date { color:#999; display:inline-block; margin-left:10px; }
+ section.replyList div.replyContent { padding:10px; margin:20px 0; }
+</style>
+
 </head>
 <body>
 	<div id="root">
@@ -162,36 +177,87 @@ textarea#gdsDes {
 
 				<form role="form" method="post" autocomplete="off">
 
-					<input type="hidden" name="n" value="${goods.gdsNum}" />
+					<input type="hidden" name="n" value="${gpView.GP_id}" />
+
+					<!-- 					<div class="inputArea"> -->
+					<!-- 						<label>1차 분류</label> <span class="category1"></span> <label>2차 -->
+					<%-- 							분류</label> <span class="category2">${goods.cateCode}</span> --%>
+					<!-- 					</div> -->
 
 					<div class="inputArea">
-						<label>1차 분류</label> <span class="category1"></span> <label>2차
-							분류</label> <span class="category2">${goods.cateCode}</span>
+						<label for="GP_name">주차장</label> <span>${gpView.GP_name}</span>
 					</div>
 
 					<div class="inputArea">
-						<label for="gdsName">주차장</label> <span>${goods.gdsName}</span>
+						<label for="GP_lat">위도</label> <span><fmt:formatNumber
+								value="${gpView.GP_lat}" /></span>
 					</div>
 
 					<div class="inputArea">
-						<label for="gdsPrice">주차 면 수</label> <span><fmt:formatNumber
-								value="${goods.gdsPrice}" pattern="###,###,###" /></span>
+						<label for="GP_long">경도 </label> <span>${gpView.GP_long}</span>
 					</div>
 
 					<div class="inputArea">
-						<label for="gdsStock">남은 주차면 </label> <span>${goods.gdsStock}</span>
+						<label for="GP_content">소개</label> <span>${gpView.GP_content}</span>
 					</div>
 
 					<div class="inputArea">
-						<label for="gdsDes">소개</label> <span>${goods.gdsDes}</span>
-					</div>
-
-					<div class="inputArea">
-						<label for="gdsImg">이미지</label>
+						<label for="GP_image">이미지</label>
 						<p>원본 이미지</p>
-						<img src="${goods.gdsImg}" class="gdsImg" />
+						<img src="${gpView.GP_image}" class="GP_image" />
 						<p>썸네일</p>
-						<img src="${goods.gdsThumbImg}" class="thumbImg" />
+						<img src="${gpView.GP_image}" class="GP_image" />
+					</div>
+
+					<div class="inputArea">
+						<label for="GP_restday">정기휴무일</label> <span>${gpView.GP_restday}</span>
+					</div>
+
+					<div class="inputArea">
+						<label for="GP_parking">주차가능여부</label> <span>${gpView.GP_parking}</span>
+					</div>
+
+					<div id="reply">
+
+						<c:if test="${member == null }">
+							<p>
+								소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요
+							</p>
+						</c:if>
+
+						<c:if test="${member != null}">
+							<section class="replyForm">
+								<form role="form" method="post" autocomplete="off">
+
+									<input type="hidden" name="GP_id" value="${gpView.GP_id}">
+
+									<div class="input_area">
+										<textarea name="repCon" id="repCon"></textarea>
+									</div>
+
+									<div class="input_area">
+										<button type="submit" id="reply_btn">댓글 남기기</button>
+									</div>
+
+								</form>
+							</section>
+						</c:if>
+
+						<section class="replyList">
+							<ol>
+								<c:forEach items="${reply}" var="reply">
+
+									<li>
+										<div class="userInfo">
+											<span class="userName">${reply.userName}</span> <span
+												class="date"><fmt:formatDate value="${reply.repDate}"
+													pattern="yyyy-MM-dd" /></span>
+										</div>
+										<div class="replyContent">${reply.repCon}</div>
+									</li>
+								</c:forEach>
+							</ol>
+						</section>
 					</div>
 
 					<div class="inputArea">
@@ -222,9 +288,12 @@ textarea#gdsDes {
 
 					</div>
 
+
+
 				</form>
 
 			</div>
+
 		</section>
 
 		<footer id="footer">

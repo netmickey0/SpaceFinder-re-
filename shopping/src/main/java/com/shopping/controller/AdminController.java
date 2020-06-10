@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,11 @@ import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
 import com.shopping.domain.GpViewVO;
+import com.shopping.domain.MemberVO;
+import com.shopping.domain.ReplyListVO;
+import com.shopping.domain.ReplyVO;
 import com.shopping.service.AdminService;
+import com.shopping.service.GpService;
 import com.shopping.utils.UploadFileUtils;
 
 import net.sf.json.JSONArray;
@@ -33,6 +38,9 @@ public class AdminController {
 
 	@Inject
 	AdminService adminService;
+	
+	@Inject
+	GpService gpService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -180,6 +188,26 @@ public class AdminController {
 
 			GpViewVO gpView = adminService.gpView(GP_id);
 			model.addAttribute("gpView", gpView);
+			
+			List<ReplyListVO> reply = gpService.replyList(GP_id);
+			model.addAttribute("reply", reply);
+			
+			
 		}
+		
+		
+		//댓글 작성
+		@RequestMapping(value = "/goods/gpView", method = RequestMethod.POST)
+		public String registReply(ReplyVO reply, HttpSession session) throws Exception {
+		 logger.info("regist reply");
+		 
+		 MemberVO member = (MemberVO)session.getAttribute("member");
+		 reply.setUserId(member.getUserId());
+		 
+		 gpService.registReply(reply);
+		 
+		 return "redirect:/goods/gpView?n=" + reply.getGP_id();
+		}
+		
 
 }

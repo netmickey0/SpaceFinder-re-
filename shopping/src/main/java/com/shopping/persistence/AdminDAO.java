@@ -34,7 +34,9 @@ public interface AdminDAO {
 	// 주차장 목록
 	public List<GoodPVO> gplist() throws Exception;
 	
-	// 상품조회 
+	// 굿플 조회 
 	public GpViewVO gpView(int GP_id) throws Exception;
+	
+	
 	
 }

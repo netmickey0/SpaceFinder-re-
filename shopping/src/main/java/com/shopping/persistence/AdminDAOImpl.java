@@ -73,10 +73,10 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList(namespace + ".gplist");
 	}
 	
-	//굿플 조호
+	//굿플 조회
 	@Override
 	public GpViewVO gpView(int GP_id) throws Exception {
-		return sql.selectOne(namespace + ".goodsView", GP_id);
+		return sql.selectOne(namespace + ".gpView", GP_id);
 	}
 
 }

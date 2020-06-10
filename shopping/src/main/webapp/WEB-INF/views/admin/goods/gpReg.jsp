@@ -123,7 +123,7 @@ id="userId" name="userId" value="${member.userId}" />
 </div>
 
 <div class="inputArea">
- <label for="gdsImg">이미지</label>
+ <label for="GP_image">이미지</label>
  <input type="file" id="GP_image" name="file" />
  <div class="select_img"><img src="" /></div>
  

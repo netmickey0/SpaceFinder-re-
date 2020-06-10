@@ -80,7 +80,7 @@
   GP_id, userId, GP_name, GP_lat, GP_long,
        GP_Runtime, GP_content, GP_image, GP_restday, GP_parking
     from GOODPLACE
-        order by GP_id desc
+        order by TO_NUMBER(GP_id) DESC
 </select>
 
 
@@ -92,7 +92,22 @@ g.GP_id, g.userId, g.GP_name, g.GP_lat, g.GP_long,
          from GOODPLACE g
 <!--              inner join goods_category c -->
 <!--                  on g.cateCode = c.cateCode            -->
-            where g.GP_id = #{GP_ids}
+            where g.GP_id = #{GP_id}
 </select>
 
+<!-- 댓글 작성 -->
+<insert id="registReply">
+ insert into GP_reply (GP_id, userId, repNum, repCon)
+     values (#{GP_id}, #{userId}, GP_reply_seq.nextval, #{repCon})
+</insert>
+
+<!-- 댓글 리스트 -->
+<select id="replyList" resultType="com.shopping.domain.ReplyListVO">
+ select
+     r.GP_id, r.userId, r.repNum, r.repCon, r.repDate, m.userName
+ from GP_reply r
+     inner join tbl_member m
+         on r.userId = m.userId
+     where GP_id = #{GP_id}
+</select>
 </mapper>

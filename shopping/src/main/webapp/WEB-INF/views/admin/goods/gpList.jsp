@@ -176,7 +176,7 @@ textarea#gdsDes {
 							<tr>
 								<td>${gplist.GP_id}</td>
 								<td>
-									<a href="/admin/goods/view?n=${gplist.GP_id}">${gplist.GP_name}</a>
+									<a href="/admin/goods/gpView?n=${gplist.GP_id}">${gplist.GP_name}</a>
 								</td>
 								<td>${gplist.GP_category}</td>
 								<td>${gplist.userId}</td>
