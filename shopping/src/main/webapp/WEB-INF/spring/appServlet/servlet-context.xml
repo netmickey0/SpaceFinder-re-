@@ -33,7 +33,7 @@
 	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<beans:constructor-arg
-			value="D:\spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp3\wtpwebapps\shopping\resources" />
+			value="/usr/local/src" />
 			
 <!-- 	<beans:constructor-arg value="/usr/local/src" /> -->
 	</beans:bean>

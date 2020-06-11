@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/resources/bootstrap/bootstrap-theme.min.css">
 <script src="/resources/bootstrap/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=mn7cwsrvym"></script>
+<script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=rebzhg9z1c"></script>
 	
 <style>
 	body { font-family:'맑은 고딕', verdana; padding:0; margin:0; }
@@ -139,13 +139,22 @@ id="userId" name="userId" value="${member.userId}" />
 
  <script>
   $("#GP_image").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
+	  var image = $("#GP_image").val();
+	  if(image.includes(".png") || image.includes(".jpg") || image.includes(".jpeg")) {
+		  if(this.files && this.files[0]) {
+			  
+			    var reader = new FileReader;
+			    reader.onload = function(data) {
+			     $(".select_img img").attr("src", data.target.result).width(500);        
+			    }
+		  		reader.readAsDataURL(this.files[0]);
+		  }
+	  } else {
+		  alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
+		  $(".select_img img").removeAttr("src");
+		  $("#GP_image").val("");
+	  }
+  
   });
  </script>
  
@@ -181,14 +190,17 @@ id="userId" name="userId" value="${member.userId}" />
           infowindow.open(map, location); */
           console.log('Coordinates: ' + location.toString());
       }
-      function onErrorGeolocation() {
+      
+      //지오로케이션 안내문
+      /* function onErrorGeolocation() {
           var center = map.getCenter();
 
           infowindow.setContent('<div style="padding:20px;">' +
               '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
 
           infowindow.open(map, center);
-      }
+      } */
+      
       $(window).on("load", function() {
           if (navigator.geolocation) {
               /**

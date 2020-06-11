@@ -16,8 +16,8 @@
  <!-- 오라클 접속 -->
     <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
         <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-<!--         <property name="url" value="jdbc:log4jdbc:oracle:thin:@54.180.89.92:1521/cdb1"/> -->
-        <property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xe"/>
+        <property name="url" value="jdbc:log4jdbc:oracle:thin:@54.180.89.92:1521/cdb1"/>
+        <!-- <property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xe"/> -->
         <property name="username" value="s1501095"/>
         <property name="password" value="1234"/>
     </bean>
