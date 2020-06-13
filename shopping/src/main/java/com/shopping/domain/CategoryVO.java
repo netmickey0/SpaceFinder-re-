@@ -1,11 +1,6 @@
 package com.shopping.domain;
 
 public class CategoryVO {
-	/*
-	 * cateName varchar2(20) not null,
-	 * cateCode varchar2(30) not null,
-	 * cateCodeRef varchar2(30) null,
-	 */
 
 	private String cateName;
 	private String cateCode;

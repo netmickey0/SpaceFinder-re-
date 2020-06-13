@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.shopping.domain.GpCategoryVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
 
@@ -32,4 +33,9 @@ public class GpDAOImpl implements GpDAO {
 		return sql.selectList(namespace + ".replyList", GP_id);
 	}
 
+	@Override
+	public List<GpCategoryVO> cateList() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".cateList");
+	}
 }

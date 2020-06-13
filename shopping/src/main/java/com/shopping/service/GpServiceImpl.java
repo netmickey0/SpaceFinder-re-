@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.shopping.domain.GpCategoryVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
 import com.shopping.persistence.GpDAO;
@@ -30,6 +31,13 @@ public class GpServiceImpl implements GpService {
 	@Override
 	public List<ReplyListVO> replyList(int GP_id) throws Exception {
 		return dao.replyList(GP_id);
+	}
+
+
+	@Override
+	public List<GpCategoryVO> cateList() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.cateList();
 	}
 
 }

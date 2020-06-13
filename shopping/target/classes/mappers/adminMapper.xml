@@ -110,4 +110,11 @@ g.GP_id, g.userId, g.GP_name, g.GP_lat, g.GP_long,
          on r.userId = m.userId
      where GP_id = #{GP_id}
 </select>
+
+<!-- GP카테고리 리스트 -->
+<select id="cateList" resultType="com.shopping.domain.GpCategoryVO">
+select
+ gp_ca_id, gp_ca_name
+ from gp_category
+</select>
 </mapper>

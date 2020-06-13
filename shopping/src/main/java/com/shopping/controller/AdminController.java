@@ -20,6 +20,7 @@ import com.shopping.domain.CategoryVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GoodsVO;
 import com.shopping.domain.GoodsViewVO;
+import com.shopping.domain.GpCategoryVO;
 import com.shopping.domain.GpViewVO;
 import com.shopping.domain.MemberVO;
 import com.shopping.domain.ReplyListVO;
@@ -136,6 +137,7 @@ public class AdminController {
 
 		return "redirect:/admin/index";
 	}
+	
 
 	// 주차장 등록
 	@RequestMapping(value = "/goods/gpReg", method = RequestMethod.GET)
@@ -178,7 +180,6 @@ public class AdminController {
 			List<GoodPVO> gplist = adminService.gplist();
 
 			model.addAttribute("gplist", gplist);
-
 		}
 		
 		// 굿플 조회

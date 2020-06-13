@@ -48,6 +48,13 @@
 		<%@ include file="../include/header.jsp"%>
 	</header>
 
+	<!-- Navigation -->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<%@ include file="../include/nav.jsp"%>
+	</nav>
+
 	<section>
 		<section class="hero-wrap hero-wrap-2"
 			style="background-image: url('/resources/publishing-company-master/images/gp_1.jpg');"
@@ -58,11 +65,12 @@
 					class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-9 ftco-animate mb-0 text-center">
 						<p class="breadcrumbs mb-0">
-							<span class="mr-2"><a href="/" style="color:white;">SpaceFinder<i
-									class="fa fa-chevron-right"></i></a></span> <span style="color:white;">굿플레이스 <i
-								class="fa fa-chevron-right"></i></span>
+							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder<i
+									class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플레이스
+								<i class="fa fa-chevron-right"></i>
+							</span>
 						</p>
-						<h1 class="mb-0 bread" style="color:white;">내가 만든 굿플레이스</h1>
+						<h1 class="mb-0 bread" style="color: white;">내가 만든 굿플레이스</h1>
 					</div>
 				</div>
 			</div>
@@ -85,16 +93,11 @@
 						<div class="categories">
 							<h3>카테고리</h3>
 							<ul>
-								<li><a href="#">전체 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">식당 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">제과점 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">주점 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">패션/뷰티 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">테마파크 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">레스토랑 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">숙박 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">문화시설 <span class="fa fa-chevron-right"></span></a></li>
-								<li><a href="#">레져 <span class="fa fa-chevron-right"></span></a></li>
+								<c:forEach items="${catelist}" var="catelist">
+									<li><a href="#" id="${catelist.gp_ca_id }">${catelist.gp_ca_name }
+											<span class="fa fa-chevron-right"></span>
+									</a></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>
@@ -430,13 +433,14 @@
 									<li><a href="#">5</a></li>
 									<li><a href="#">&gt;</a></li>
 								</ul>
-								<button id="idChk" class="btn btn-primary" type="button" onclick="location.href='/'">굿플등록</button>
+								<button id="idChk" class="btn btn-primary" type="button"
+									onclick="location.href='/goodplace/gpReg'">굿플등록</button>
 							</div>
 						</div>
 					</div>
 					<!-- .col-md-8 -->
+				</div>
 			</div>
-		</div>
 	</section>
 
 	<!-- Footer -->
