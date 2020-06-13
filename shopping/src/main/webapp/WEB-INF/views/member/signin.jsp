@@ -1,91 +1,105 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <head>
+    <title>Space Finder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-  <title>SpaceFinder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Bootstrap core CSS -->
-  <link href="/resources/clean-blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="/resources/clean-blog/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
-  <link href="/resources/clean-blog/css/clean-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/animate.css">
+    
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/flaticon.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/style.css">
+  </head>
 
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <%@ include file="../include/nav.jsp" %>
-  </nav>
-
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('/resources/img/home-bg.jpg')">
-    <%@ include file="../include/header.jsp" %>
+  <header>
+		<%@ include file="../include/header.jsp" %>
   </header>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>로그인</p>
-        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-        <form role="form" method="post" autocomplete="off" name="sentMessage" id="contactForm" novalidate>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>아이디</label>
-              <input type="email" class="form-control" placeholder="아이디(E-mail)" id="userId" name="userId" required="required" data-validation-required-message="Please enter your E-mail">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>패스워드</label>
-              <input type="password" class="form-control" placeholder="패스워드" id="userPass" name="userPass" required="required" data-validation-required-message="Please enter your Password">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" id="signin_btn" name="signin_btn">로그인</button>
-          <c:if test="${msg == false}">
-			  <script>alert("로그인 실패")</script>
-		  </c:if>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <hr>
+  <section>
+  	<div class="col-md-7">
+		<div class="contact-wrap w-100 p-md-5 p-4">
+			<h3 class="mb-4">로그인</h3>
+			<form id="contactForm" name="contactForm" class="contactForm" role="form" method="post" autocomplete="off">
+				<div class="row">
+				
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="label" for="userId">아이디</label>
+							<input type="email" class="form-control" name="userId" id="userId" placeholder="example@email.com"  required="required">
+						</div>
+					</div>
+					
+					<div class="col-md-12"> 
+						<div class="form-group">
+							<label class="label" for="userPass">패스워드</label>
+							<input type="password" class="form-control" name="userPass" id="userPass" required="required" placeholder="패스워드">
+						</div>
+					</div>
+					
+					
+					<div class="col-md-12">
+						<div class="form-group">
+							<input type="submit" id="signin_btn" name="signin_btn" value="로그인" class="btn btn-primary">
+							
+							<c:if test="${msg == '비밀번호'}">
+								<div class="submitting" style="color: #f00;">로그인에 실패했습니다. 패스워드를 확인해주세요.</div>
+							</c:if>
+							
+							<c:if test="${msg == '아이디'}">
+								<div class="submitting" style="color: #f00;">로그인에 실패했습니다. 아이디를 확인해주세요.</div>
+							</c:if>
+						</div>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+	</div>
+  </section>
 
   <!-- Footer -->
   <footer>
      <%@ include file="../include/footer.jsp" %>
   </footer>
+  
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/resources/clean-blog/vendor/jquery/jquery.min.js"></script>
-  <script src="/resources/clean-blog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="/resources/clean-blog/js/clean-blog.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/resources/publishing-company-master/js/popper.min.js"></script>
+  <script src="/resources/publishing-company-master/js/bootstrap.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.easing.1.3.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.waypoints.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.stellar.min.js"></script>
+  <script src="/resources/publishing-company-master/js/owl.carousel.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.magnific-popup.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.animateNumber.min.js"></script>
+  <script src="/resources/publishing-company-master/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> <!-- ?????구글맵???? -->
+  <script src="/resources/publishing-company-master/js/google-map.js"></script>
+  <script src="/resources/publishing-company-master/js/main.js"></script>
 
 </body>
 

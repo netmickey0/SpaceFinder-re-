@@ -37,7 +37,7 @@ public class MemberController {
 	
 	// 회원 가입 post
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String postSignup(MemberVO vo) throws Exception {
+	public String postSignup(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 	 logger.info("post signup");
 	  
 	 String inputPass = vo.getUserPass();
@@ -45,8 +45,10 @@ public class MemberController {
 	 vo.setUserPass(pass);
 	 
 	 service.signup(vo);
+	 
+	 vo.setUserPass(inputPass);
 
-	 return "redirect:/";
+	 return postSignin(vo, req, rttr);
 	}
 	
 	// 로그인  get
@@ -63,13 +65,18 @@ public class MemberController {
 	 MemberVO login = service.signin(vo);  
 	 HttpSession session = req.getSession();
 	 
-	 boolean passMatch = passEncoder.matches(vo.getUserPass(), login.getUserPass());
-	 
-	 if(login != null && passMatch) {
-	  session.setAttribute("member", login);
+	 if(login != null) {
+		 boolean passMatch = passEncoder.matches(vo.getUserPass(), login.getUserPass());
+		 if(passMatch) {
+			 session.setAttribute("member", login);
+		 }else {
+			 session.setAttribute("member", null);
+			  rttr.addFlashAttribute("msg", "비밀번호");
+			  return "redirect:/member/signin";
+		 }
 	 } else {
 	  session.setAttribute("member", null);
-	  rttr.addFlashAttribute("msg", false);
+	  rttr.addFlashAttribute("msg", "아이디");
 	  return "redirect:/member/signin";
 	 }  
 	 

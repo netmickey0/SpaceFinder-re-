@@ -7,116 +7,67 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <head>
+    <title>Space Finder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-  <title>SpaceFinder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- Bootstrap core CSS -->
-  <link href="/resources/clean-blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="/resources/clean-blog/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- Custom styles for this template -->
-  <link href="/resources/clean-blog/css/clean-blog.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/animate.css">
+    
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/flaticon.css">
+    <link rel="stylesheet" href="/resources/publishing-company-master/css/style.css">
+  </head>
 
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <%@ include file="include/nav.jsp" %>
-  </nav>
-
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('/resources/img/home-bg.jpg')">
+  <header>
     <%@ include file="include/header.jsp" %>
   </header>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <a href="#">
-            <h2 class="post-title">
-              Man must explore, and this is exploration at its greatest
-            </h2>
-            <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="#">
-            <h2 class="post-title">
-              I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-            </h2>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 18, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="#">
-            <h2 class="post-title">
-              Science has not yet mastered prophecy
-            </h2>
-            <h3 class="post-subtitle">
-              We predict too much for the next year and yet far too little for the next ten.
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on August 24, 2019</p>
-        </div>
-        <hr>
-        <div class="post-preview">
-          <a href="#">
-            <h2 class="post-title">
-              Failure is not an option
-            </h2>
-            <h3 class="post-subtitle">
-              Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-            </h3>
-          </a>
-          <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on July 8, 2019</p>
-        </div>
-        <hr>
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <%@ include file="include/nav.jsp" %>
+  </nav>
 
-  <hr>
+  <!-- Main Content -->
+  <section class="hero-wrap" style="background-image: url('/resources/publishing-company-master/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+  	<%@ include file="include/section.jsp" %>
+  </section>
 
   <!-- Footer -->
   <footer>
      <%@ include file="include/footer.jsp" %>
   </footer>
+  
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/resources/clean-blog/vendor/jquery/jquery.min.js"></script>
-  <script src="/resources/clean-blog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="/resources/clean-blog/js/clean-blog.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/resources/publishing-company-master/js/popper.min.js"></script>
+  <script src="/resources/publishing-company-master/js/bootstrap.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.easing.1.3.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.waypoints.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.stellar.min.js"></script>
+  <script src="/resources/publishing-company-master/js/owl.carousel.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.magnific-popup.min.js"></script>
+  <script src="/resources/publishing-company-master/js/jquery.animateNumber.min.js"></script>
+  <script src="/resources/publishing-company-master/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> <!-- ?????구글맵???? -->
+  <script src="/resources/publishing-company-master/js/google-map.js"></script>
+  <script src="/resources/publishing-company-master/js/main.js"></script>
 
 </body>
 

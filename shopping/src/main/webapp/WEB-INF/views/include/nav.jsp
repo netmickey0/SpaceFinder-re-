@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="container">
+<!-- <div class="container">
       <a class="navbar-brand" href="/">SpaceFinder</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -24,9 +24,25 @@
           </li>
         </ul>
       </div>
-    </div>
-	
-	<div class="container">
+    </div> -->
+    
+    
+<div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fa fa-bars"></span> Menu
+  </button>
+  <div class="collapse navbar-collapse" id="ftco-nav">
+    <ul class="navbar-nav m-auto">
+    	<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+    	<li class="nav-item"><a href="/goodplace" class="nav-link">굿플레이스</a></li>
+    	<li class="nav-item"><a href="#" class="nav-link">핫플레이스</a></li>
+    	<li class="nav-item"><a href="#" class="nav-link">플레이스클럽</a></li>
+    </ul>
+  </div>
+</div>
+
+
+	<%-- <div class="container">
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<c:if test="${member == null}">
@@ -55,4 +71,4 @@
 				
 			</ul>
 		</div>
-	</div>
+	</div> --%>
