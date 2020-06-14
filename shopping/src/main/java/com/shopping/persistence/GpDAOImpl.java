@@ -7,24 +7,24 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
 
 @Repository
 public class GpDAOImpl implements GpDAO {
-	
+
 	@Inject
 	private SqlSession sql;
-	
-	// 매퍼 
+
+	// 매퍼
 	private static String namespace = "com.shopping.mappers.adminMapper";
 
-	
-	//댓글 작성
+	// 댓글 작성
 	@Override
 	public void registReply(ReplyVO reply) throws Exception {
-		 sql.insert(namespace + ".registReply", reply);
+		sql.insert(namespace + ".registReply", reply);
 	}
 
 	// 댓글 리스트
@@ -37,5 +37,12 @@ public class GpDAOImpl implements GpDAO {
 	public List<GpCategoryVO> cateList() throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectList(namespace + ".cateList");
+	}
+
+	// 주차장 등록
+	@Override
+	public void GP_reg(GoodPVO vo) throws Exception {
+		sql.insert(namespace + ".GP_reg", vo);
+
 	}
 }

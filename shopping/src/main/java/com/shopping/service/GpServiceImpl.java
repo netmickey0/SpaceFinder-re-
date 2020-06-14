@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -40,4 +41,11 @@ public class GpServiceImpl implements GpService {
 		return dao.cateList();
 	}
 
+	//주차장 등록
+	@Override
+	public void GP_reg(GoodPVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.GP_reg(vo);
+	}
+	
 }

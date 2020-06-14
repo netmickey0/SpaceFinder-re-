@@ -30,13 +30,28 @@ public class GoodPVO {
 	private String GP_long;
 	private String GP_Runtime;
 	private String GP_content;
-	private String GP_image;
 	private String GP_click;
 	private String GP_restday;
 	private String GP_parking;
 	private Date GP_date;
+	private String GP_image1;
+	private String GP_image2;
+	private String GP_image3;
+	private String GP_image4;
 	
-	private String GP_ThumbImg;
+	private String GP_ThumbImg1;
+	private String GP_ThumbImg2;
+	private String GP_ThumbImg3;
+	private String GP_ThumbImg4;
+	
+	private String GP_slot;
+	private String GP_basetime;
+	private String GP_basepay;
+	private String GP_overtime;
+	private String GP_overpay;
+	private String GP_onepay;
+	private String GP_monthpay;
+	
 
 	public String getGP_id() {
 		return GP_id;
@@ -102,14 +117,6 @@ public class GoodPVO {
 		GP_content = gP_content;
 	}
 
-	public String getGP_image() {
-		return GP_image;
-	}
-
-	public void setGP_image(String gP_image) {
-		GP_image = gP_image;
-	}
-
 	public String getGP_click() {
 		return GP_click;
 	}
@@ -142,16 +149,125 @@ public class GoodPVO {
 		GP_date = gP_date;
 	}
 
-	public String getGP_ThumbImg() {
-		return GP_ThumbImg;
+	public String getGP_image1() {
+		return GP_image1;
 	}
 
-	public void setGP_ThumbImg(String gP_ThumbImg) {
-		GP_ThumbImg = gP_ThumbImg;
+	public void setGP_image1(String gP_image1) {
+		GP_image1 = gP_image1;
 	}
 
-	
-	
-	
+	public String getGP_image2() {
+		return GP_image2;
+	}
+
+	public void setGP_image2(String gP_image2) {
+		GP_image2 = gP_image2;
+	}
+
+	public String getGP_image3() {
+		return GP_image3;
+	}
+
+	public void setGP_image3(String gP_image3) {
+		GP_image3 = gP_image3;
+	}
+
+	public String getGP_image4() {
+		return GP_image4;
+	}
+
+	public void setGP_image4(String gP_image4) {
+		GP_image4 = gP_image4;
+	}
+
+	public String getGP_ThumbImg1() {
+		return GP_ThumbImg1;
+	}
+
+	public void setGP_ThumbImg1(String gP_ThumbImg1) {
+		GP_ThumbImg1 = gP_ThumbImg1;
+	}
+
+	public String getGP_ThumbImg2() {
+		return GP_ThumbImg2;
+	}
+
+	public void setGP_ThumbImg2(String gP_ThumbImg2) {
+		GP_ThumbImg2 = gP_ThumbImg2;
+	}
+
+	public String getGP_ThumbImg3() {
+		return GP_ThumbImg3;
+	}
+
+	public void setGP_ThumbImg3(String gP_ThumbImg3) {
+		GP_ThumbImg3 = gP_ThumbImg3;
+	}
+
+	public String getGP_ThumbImg4() {
+		return GP_ThumbImg4;
+	}
+
+	public void setGP_ThumbImg4(String gP_ThumbImg4) {
+		GP_ThumbImg4 = gP_ThumbImg4;
+	}
+
+	public String getGP_slot() {
+		return GP_slot;
+	}
+
+	public void setGP_slot(String gP_slot) {
+		GP_slot = gP_slot;
+	}
+
+	public String getGP_basetime() {
+		return GP_basetime;
+	}
+
+	public void setGP_basetime(String gP_basetime) {
+		GP_basetime = gP_basetime;
+	}
+
+	public String getGP_basepay() {
+		return GP_basepay;
+	}
+
+	public void setGP_basepay(String gP_basepay) {
+		GP_basepay = gP_basepay;
+	}
+
+	public String getGP_overtime() {
+		return GP_overtime;
+	}
+
+	public void setGP_overtime(String gP_overtime) {
+		GP_overtime = gP_overtime;
+	}
+
+	public String getGP_overpay() {
+		return GP_overpay;
+	}
+
+	public void setGP_overpay(String gP_overpay) {
+		GP_overpay = gP_overpay;
+	}
+
+	public String getGP_onepay() {
+		return GP_onepay;
+	}
+
+	public void setGP_onepay(String gP_onepay) {
+		GP_onepay = gP_onepay;
+	}
+
+	public String getGP_monthpay() {
+		return GP_monthpay;
+	}
+
+	public void setGP_monthpay(String gP_monthpay) {
+		GP_monthpay = gP_monthpay;
+	}
+
 	
 }

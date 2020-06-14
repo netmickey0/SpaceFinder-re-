@@ -68,10 +68,10 @@
 
 <!-- 주차장 등록 -->
 <insert id="GP_reg">
- insert into GoodPlace (GP_id, userId, GP_name, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_restday, GP_parking)
-     values (GoodPlace_seq.nextval, #{userId}, #{GP_name}, #{GP_lat}, #{GP_long},
-        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking})
+ insert into GoodPlace (GP_id, userId, GP_name, GP_category, GP_lat, GP_long,
+       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay)
+     values (GoodPlace_seq.nextval, #{userId}, #{GP_name}, #{GP_category}, #{GP_lat}, #{GP_long},
+        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking}, #{GP_image1}, #{GP_image2}, #{GP_image3}, #{GP_image4}, #{GP_slot}, #{GP_basetime}, #{GP_basepay}, #{GP_overtime}, #{GP_overpay}, #{GP_onepay}, #{GP_monthpay})
 </insert>
 
 <!-- 주차장 목록 --> 
