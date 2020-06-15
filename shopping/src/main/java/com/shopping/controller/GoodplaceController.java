@@ -16,10 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.shopping.domain.GoodPListVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
+import com.shopping.domain.GpViewVO;
+import com.shopping.domain.ReplyListVO;
+import com.shopping.domain.ReplyVO;
 import com.shopping.service.GpService;
 import com.shopping.utils.MultiFiles;
 import com.shopping.utils.UploadFileUtils;
@@ -44,6 +49,10 @@ public class GoodplaceController {
 		List<GpCategoryVO> catelist = gpService.cateList();
 
 		model.addAttribute("catelist", catelist);
+
+		List<GoodPListVO> gplist = gpService.gplist();
+
+		model.addAttribute("gplist", gplist);
 	}
 
 	// 카테고리 리스트
@@ -63,8 +72,8 @@ public class GoodplaceController {
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
-		
-		int i=0;
+
+		int i = 0;
 		for (MultipartFile file : multiFiles.getGP_image()) {
 			if (file != null) {
 				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
@@ -72,26 +81,26 @@ public class GoodplaceController {
 			} else {
 				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 			}
-			switch(i) {
+			switch (i) {
 			case 0:
 				vo.setGP_image1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg1(
-						File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+				vo.setGP_ThumbImg1(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
 				break;
 			case 1:
 				vo.setGP_image2(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg2(
-						File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+				vo.setGP_ThumbImg2(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
 				break;
 			case 2:
 				vo.setGP_image3(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg3(
-						File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+				vo.setGP_ThumbImg3(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
 				break;
 			case 3:
 				vo.setGP_image4(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg4(
-						File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+				vo.setGP_ThumbImg4(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
 				break;
 			}
 			i++;
@@ -102,10 +111,40 @@ public class GoodplaceController {
 				+ req.getParameter("weekend_close_time");
 		vo.setGP_Runtime(runtime);
 
-
 		gpService.GP_reg(vo);
 
 		return "redirect:/goodplace/main";
 	}
 
+	// 굿플 조회
+	@RequestMapping(value = "/gpView", method = RequestMethod.GET)
+	public void getGpView(@RequestParam("GP_id") int GP_id, Model model) throws Exception {
+		logger.info("get Gp view");
+		
+		List<GpCategoryVO> catelist = gpService.cateList();
+		model.addAttribute("catelist", catelist);
+		
+		GpViewVO gpView = gpService.gpView(GP_id);
+		model.addAttribute("gpView", gpView);
+		
+		List<ReplyListVO> reply = gpService.replyList(GP_id);
+		model.addAttribute("reply", reply);
+
+		/*
+		 * List<ReplyListVO> reply = gpService.replyList(GP_id);
+		 * model.addAttribute("reply", reply);
+		 */
+
+	}
+	
+	@RequestMapping(value="/subReply", method = RequestMethod.POST)
+	public void subReply(HttpServletRequest req) throws Exception {
+		ReplyVO replyVO = new ReplyVO();
+		replyVO.setUserId(req.getParameter("userId"));
+		replyVO.setGP_content(req.getParameter("reply_content"));
+		replyVO.setGP_REF_ID(req.getParameter("GP_REF_ID"));
+		
+		gpService.registReply(replyVO);
+	} 
+	
 }

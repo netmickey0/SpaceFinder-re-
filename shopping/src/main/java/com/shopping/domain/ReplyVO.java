@@ -6,9 +6,10 @@ public class ReplyVO {
 	
 	private String GP_id;
 	private String userId;
-	private int repNum;
-	private String repCon;
-	private Date repDate;
+	private String GP_content;
+	private Date GP_date;
+	private String GP_REF_ID;
+	
 	public String getGP_id() {
 		return GP_id;
 	}
@@ -21,25 +22,24 @@ public class ReplyVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public int getRepNum() {
-		return repNum;
+	public String getGP_content() {
+		return GP_content;
 	}
-	public void setRepNum(int repNum) {
-		this.repNum = repNum;
+	public void setGP_content(String gP_content) {
+		GP_content = gP_content;
 	}
-	public String getRepCon() {
-		return repCon;
+	public Date getGP_date() {
+		return GP_date;
 	}
-	public void setRepCon(String repCon) {
-		this.repCon = repCon;
+	public void setGP_date(Date gP_date) {
+		GP_date = gP_date;
 	}
-	public Date getRepDate() {
-		return repDate;
+	public String getGP_REF_ID() {
+		return GP_REF_ID;
 	}
-	public void setRepDate(Date repDate) {
-		this.repDate = repDate;
+	public void setGP_REF_ID(String gP_REF_ID) {
+		GP_REF_ID = gP_REF_ID;
 	}
 	
 	
-
 }

@@ -67,10 +67,11 @@
 					class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-9 ftco-animate mb-0 text-center">
 						<p class="breadcrumbs mb-0">
-							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder<i
-									class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플레이스
-								<i class="fa fa-chevron-right"></i>
-							</span>
+							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder <i
+								class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a
+							href="/goodplace/main" style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플 등록
+							<i class="fa fa-chevron-right"></i>
+						</span>
 						</p>
 						<h1 class="mb-0 bread" style="color: white;">내가 만든 굿플레이스</h1>
 					</div>

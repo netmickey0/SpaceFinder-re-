@@ -5,59 +5,33 @@ import java.util.Date;
 public class ReplyListVO {
 	
 	private String GP_id;
-	private String userId;
-	private int reqNum;
-	private String repCon;
-	private Date repDate;
+	private String username;
+	private String GP_content;
+	private Date GP_date;
 	
-	private String userName;
-
 	public String getGP_id() {
 		return GP_id;
 	}
-
 	public void setGP_id(String gP_id) {
 		GP_id = gP_id;
 	}
-
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	public int getReqNum() {
-		return reqNum;
+	public String getGP_content() {
+		return GP_content;
 	}
-
-	public void setReqNum(int reqNum) {
-		this.reqNum = reqNum;
+	public void setGP_content(String gP_content) {
+		GP_content = gP_content;
 	}
-
-	public String getRepCon() {
-		return repCon;
+	public Date getGP_date() {
+		return GP_date;
 	}
-
-	public void setRepCon(String repCon) {
-		this.repCon = repCon;
-	}
-
-	public Date getRepDate() {
-		return repDate;
-	}
-
-	public void setRepDate(Date repDate) {
-		this.repDate = repDate;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setGP_date(Date gP_date) {
+		GP_date = gP_date;
 	}
 	
 }
