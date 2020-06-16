@@ -38,7 +38,7 @@ public class GpServiceImpl implements GpService {
 		return dao.cateList();
 	}
 
-	// 주차장 등록
+	// 굿플 등록
 	@Override
 	public void GP_reg(GoodPVO vo) throws Exception {
 		// TODO Auto-generated method stub
@@ -56,6 +56,18 @@ public class GpServiceImpl implements GpService {
 	@Override
 	public GpViewVO gpView(int GP_id) throws Exception {
 		return dao.gpView(GP_id);
+	}
+
+	@Override
+	public void GP_up(GoodPVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.GP_up(vo);
+	}
+
+	@Override
+	public void GP_del(int GP_id) throws Exception {
+		// TODO Auto-generated method stub
+		dao.GP_del(GP_id);
 	}
 
 }

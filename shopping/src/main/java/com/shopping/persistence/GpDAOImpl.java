@@ -59,4 +59,16 @@ public class GpDAOImpl implements GpDAO {
 		return sql.selectOne(namespace + ".gpView", GP_id);
 	}
 
+	@Override
+	public void GP_up(GoodPVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update(namespace + ".GP_up", vo);
+	}
+
+	@Override
+	public void GP_del(int GP_id) throws Exception {
+		// TODO Auto-generated method stub
+		sql.delete(namespace + ".GP_del", GP_id);
+	}
+
 }

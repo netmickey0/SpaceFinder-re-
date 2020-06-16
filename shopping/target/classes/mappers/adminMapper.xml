@@ -66,7 +66,7 @@
  where gdsNum = #{gdsNum}
 </delete>
 
-<!-- 주차장 등록 -->
+<!-- 굿플 등록 -->
 <insert id="GP_reg">
  insert into GoodPlace (GP_id, userId, GP_name, GP_category, GP_lat, GP_long,
        GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4)
@@ -113,4 +113,37 @@ select
  gp_ca_id, gp_ca_name
  from gp_category
 </select>
+
+<update id="GP_up">
+update GoodPlace set 
+GP_name = #{GP_name}, 
+GP_category = #{GP_category}, 
+GP_lat = #{GP_lat}, 
+GP_long = #{GP_long},
+GP_Runtime = #{GP_Runtime}, 
+GP_content = #{GP_content}, 
+GP_restday = #{GP_restday}, 
+GP_parking = #{GP_parking}, 
+GP_image1 = #{GP_image1}, 
+GP_image2 = #{GP_image2}, 
+GP_image3 = #{GP_image3}, 
+GP_image4 = #{GP_image4}, 
+GP_slot = #{GP_slot}, 
+GP_basetime = #{GP_basetime}, 
+GP_basepay = #{GP_basepay}, 
+GP_overtime = #{GP_overtime}, 
+GP_overpay = #{GP_overpay}, 
+GP_onepay = #{GP_onepay}, 
+GP_monthpay = #{GP_monthpay}, 
+GP_ThumbImg1 = #{GP_ThumbImg1},
+GP_ThumbImg2 = #{GP_ThumbImg2},
+GP_ThumbImg3 = #{GP_ThumbImg3},
+GP_ThumbImg4 = #{GP_ThumbImg4}
+where GP_id = #{GP_id}
+
+</update>
+
+<delete id="GP_del">
+delete from GoodPlace where GP_id = #{GP_id} or GP_REF_ID = #{GP_id}
+</delete>
 </mapper>

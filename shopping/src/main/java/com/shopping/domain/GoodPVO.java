@@ -52,6 +52,7 @@ public class GoodPVO {
 	private String GP_onepay;
 	private String GP_monthpay;
 	
+	private String GP_REF_ID;
 
 	public String getGP_id() {
 		return GP_id;
@@ -267,6 +268,14 @@ public class GoodPVO {
 
 	public void setGP_monthpay(String gP_monthpay) {
 		GP_monthpay = gP_monthpay;
+	}
+
+	public String getGP_REF_ID() {
+		return GP_REF_ID;
+	}
+
+	public void setGP_REF_ID(String gP_REF_ID) {
+		GP_REF_ID = gP_REF_ID;
 	}
 
 	

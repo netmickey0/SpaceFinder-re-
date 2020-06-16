@@ -28,4 +28,10 @@ public interface GpService {
 
 	// 굿플 조회
 	public GpViewVO gpView(int GP_id) throws Exception;
+	
+	//굿플 업데이트
+	public void GP_up(GoodPVO vo) throws Exception;
+	
+	//굿플 삭제
+	public void GP_del(int GP_id) throws Exception;
 }

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -161,6 +162,17 @@
 					</p>
 					<br> <br>
 					<p>${gpView.GP_content }</p>
+					<div
+						style="display: flex; align-items: flex-end; justify-content: flex-end;">
+						<button id="updategoodplace" class="btn btn-primary" type="button"
+							style="margin-right: 10px" onclick="location.href='/goodplace/gpUpdate?GP_id='+${gpView.GP_id }">수정</button>
+
+						<button id="deletegoodplace" class="btn btn-primary" type="button"
+							style="margin-right: 10px" onclick="location.href='/goodplace/gpDelete?GP_id='+${gpView.GP_id }">삭제</button>
+
+						<button id="movemain" class="btn btn-primary" type="button"
+							style="margin-right: 10px" onclick="location.href='/goodplace/main'">목록</button>
+					</div>
 
 
 					<div class="pt-5 mt-5" id="div_reply">
@@ -173,7 +185,7 @@
 								<textarea name="reply_content" id="reply_content" cols="30"
 									rows="3" class="form-control"></textarea>
 								<button id="submitReply" class="btn py-3 px-4 btn-primary"
-									type="button">등록</button>
+									type="button" style="margin-top: 10px;">등록</button>
 							</form>
 						</div>
 						<c:if test="${not empty reply }">
@@ -183,7 +195,7 @@
 									<li class="comment">
 										<div class="comment-body">
 											<h3>${reply.username }</h3>
-											<div class="meta">${reply.GP_date }</div>
+											<div class="meta"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${reply.GP_date }"/></div>
 											<p>${reply.GP_content }</p>
 											<p>
 												<a href="#" class="reply">Reply</a>
@@ -245,9 +257,16 @@
 
 
 	<script>
+		$(function(){
+			if(${member.userId eq null} || ${member.userId ne gpView.userId} ){
+				$("#updategoodplace").hide();
+				$("#deletegoodplace").hide();
+			}
+		});
+			
 		$("#submitReply").click(function() {
 			if ($("#reply_content").val() != "") {
-				var query = {
+				const query = {
 					userId : $("#userId").val(),
 					GP_REF_ID : $("#GP_REF_ID").val(),
 					reply_content : $("#reply_content").val()
@@ -258,10 +277,8 @@
 					type : "post",
 					data : query,
 					success : function(data) {
-						
+						location.reload();
 					}
-				}).done(function{
-					alert("댓글 등록 완료");
 				}); // ajax 끝
 			} else {
 				alert("내용을 입력하세요!");

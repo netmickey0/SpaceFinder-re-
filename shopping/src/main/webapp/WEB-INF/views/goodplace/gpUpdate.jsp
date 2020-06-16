@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -67,11 +68,13 @@
 					class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-9 ftco-animate mb-0 text-center">
 						<p class="breadcrumbs mb-0">
-							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder <i
-								class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a
-							href="/goodplace/main" style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플 등록
-							<i class="fa fa-chevron-right"></i>
-						</span>
+							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
+									<i class="fa fa-chevron-right"></i>
+							</a></span> <span class="mr-2"><a href="/goodplace/main"
+								style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span>
+							<span style="color: white;">굿플 수정 <i
+								class="fa fa-chevron-right"></i>
+							</span>
 						</p>
 						<h1 class="mb-0 bread" style="color: white;">내가 만든 굿플레이스</h1>
 					</div>
@@ -123,16 +126,22 @@
 
 				<div class="col-md-7">
 					<div class="contact-wrap w-100 p-md-5 p-4">
-						<h3 class="mb-4">굿 플레이스 등록</h3>
+						<h3 class="mb-4">굿플레이스 수정</h3>
 						<form role="form" method="post" autocomplete="off"
 							enctype="multipart/form-data" id="contactForm" name="contactForm"
 							class="contactForm">
 							<div class="row">
+								<div class="col-md-12" style="display: none;">
+									<input type="text" name="ch_gp_ca_id" id="ch_gp_ca_id"
+										value="${gpView.GP_category }" required /> <input type="text"
+										name="ch_gp_parking" id="ch_gp_parking"
+										value="${gpView.GP_parking }" required />
+								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="label" for="GP_name">플레이스 이름</label> <input
-											type="text" class="form-control" name="GP_name" id="GP_name"
-											placeholder="PlaceName" required>
+										<input type="text" class="form-control" name="GP_name"
+											id="GP_name" placeholder="PlaceName"
+											value="${gpView.GP_name }" required>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -168,25 +177,29 @@
 										</div>
 									</div>
 								</div>
+								<c:set var="sub_runtime" value="${gpView.GP_Runtime}" />
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekday_on_time">평일오픈시간</label> <input
 											type="time" class="form-control" name="weekday_on_time"
-											id="weekday_on_time" placeholder="평일오픈시간" required>
+											id="weekday_on_time" placeholder="평일오픈시간"
+											value="${fn:substring(sub_runtime,5,10)}" required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekday_close_time">평일마감시간</label> <input
 											type="time" class="form-control" name="weekday_close_time"
-											id="weekday_close_time" placeholder="평일마감시간" required>
+											id="weekday_close_time" placeholder="평일마감시간"
+											value="${fn:substring(sub_runtime,13,18)}" required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekend_on_time">주말(휴일)오픈시간</label>
 										<input type="time" class="form-control" name="weekend_on_time"
-											id="weekend_on_time" placeholder="주말(휴일)오픈시간" required>
+											id="weekend_on_time" placeholder="주말(휴일)오픈시간"
+											value="${fn:substring(sub_runtime,28,33)}" required>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -194,7 +207,8 @@
 										<label class="label" for="weekend_close_time">주말(휴일)마감시간</label>
 										<input type="time" class="form-control"
 											name="weekend_close_time" id="weekend_close_time"
-											placeholder="주말(휴일)마감시간" required>
+											placeholder="주말(휴일)마감시간"
+											value="${fn:substring(sub_runtime,36,41)}" required>
 									</div>
 								</div>
 
@@ -211,19 +225,22 @@
 								<div style="display: none;">
 									<label for="GP_lat">위도</label>
 									<!-- 상품가격 -->
-									<input type="text" id="GP_lat" name="GP_lat" required />
+									<input type="text" id="GP_lat" name="GP_lat"
+										value="${gpView.GP_lat }" required />
 								</div>
 								<div style="display: none;">
 									<label for="GP_long">경도</label>
 									<!-- 수량 -->
-									<input type="text" id="GP_long" name="GP_long" required />
+									<input type="text" id="GP_long" name="GP_long"
+										value="${gpView.GP_long }" required />
 								</div>
 
 								<div class="col-md-12">
 									<div class="form-group">
 										<label class="label" for="GP_restday">정기휴무일</label> <input
 											type="text" class="form-control" name="GP_restday"
-											id="GP_restday" placeholder="둘째,넷째 일요일 쉽니다." required>
+											id="GP_restday" placeholder="둘째,넷째 일요일 쉽니다."
+											value="${gpView.GP_restday }" required>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -231,11 +248,12 @@
 										<label class="label" for="GP_content">내용</label>
 										<textarea name="GP_content" class="form-control"
 											id="GP_content" cols="30" rows="6"
-											placeholder="당신이 만든 굿플레이스에 대해 설명해주세요" required></textarea>
+											placeholder="당신이 만든 굿플레이스에 대해 설명해주세요" required>${gpView.GP_content }</textarea>
 									</div>
 								</div>
-
-								<div class="col-md-12">
+								
+								<!-- <button id="image_update">이미지 변경하기</button> -->
+								<div class="col-md-12" id="GP_image_div">
 									<div class="form-group">
 										<label class="label" for="GP_image1">대표이미지</label> <input
 											class="form-control" type="file" id="GP_image1"
@@ -271,61 +289,62 @@
 								</div>
 
 
-								<div class="col-md-6" id="GP_slot_div">
+								<div class="col-md-6" id="GP_slot">
 									<div class="form-group">
 										<label class="label" for="GP_slot">주차 면수</label> <input
 											type="number" min="1" max="500" class="form-control"
-											name="GP_slot" id="GP_slot" placeholder="주차가능한 면수">
+											name="GP_slot" id="GP_slot" value="${gpView.GP_slot }" placeholder="주차가능한 면수">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_basetime_div">
+								<div class="col-md-6" id="GP_basetime">
 									<div class="form-group">
 										<label class="label" for="GP_basetime">기본 시간</label> <input
 											type="text" class="form-control" name="GP_basetime"
-											id="GP_basetime" placeholder="ex) 30분">
+											id="GP_basetime" value="${gpView.GP_basetime }" placeholder="ex) 30분">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_basepay_div">
+								<div class="col-md-6" id="GP_basepay">
 									<div class="form-group">
 										<label class="label" for="GP_basepay">기본 요금</label> <input
 											type="text" class="form-control" name="GP_basepay"
-											id="GP_basepay" placeholder="ex) 1000원">
+											id="GP_basepay" value="${gpView.GP_basepay }" placeholder="ex) 1000원">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_overtime_div">
+								<div class="col-md-6" id="GP_overtime">
 									<div class="form-group">
 										<label class="label" for="GP_overtime">추가 시간</label> <input
 											type="text" class="form-control" name="GP_overtime"
-											id="GP_overtime" placeholder="ex) 10분당">
+											id="GP_overtime" value="${gpView.GP_overtime }" placeholder="ex) 10분당">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_overpay_div">
+								<div class="col-md-6" id="GP_overpay">
 									<div class="form-group">
 										<label class="label" for="GP_overpay">추가 요금</label> <input
 											type="text" class="form-control" name="GP_overpay"
-											id="GP_overpay" placeholder="ex) 300원">
+											id="GP_overpay" value="${gpView.GP_overpay }" placeholder="ex) 300원">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_onepay_div">
+								<div class="col-md-6" id="GP_onepay">
 									<div class="form-group">
 										<label class="label" for="GP_onepay">하루 요금</label> <input
 											type="text" class="form-control" name="GP_onepay"
-											id="GP_onepay" placeholder="ex) 15000원">
+											id="GP_onepay" value="${gpView.GP_onepay }" placeholder="ex) 15000원">
 									</div>
 								</div>
-								<div class="col-md-6" id="GP_monthpay_div">
+								<div class="col-md-6" id="GP_monthpay">
 									<div class="form-group">
 										<label class="label" for="GP_monthpay">한달 요금</label> <input
 											type="text" class="form-control" name="GP_monthpay"
-											id="GP_monthpay" placeholder="ex) 250000원">
+											id="GP_monthpay" value="${gpView.GP_monthpay }" placeholder="ex) 250000원">
 									</div>
 								</div>
-								
+
 								<div class="col-md-12">
 									<div class="form-group">
-										<input type="submit" value="등록" class="btn btn-primary">
+										<input type="submit" value="수정" class="btn btn-primary"
+											onclick="/goodplace/gpUpdate">
 										<input type="button" value="취소" class="btn btn-primary"
-											onclick="location.href='/goodplace/main'">
+											onclick="location.href='/goodplace/gpView?GP_id=${gpView.GP_id}'">
 										<div class="submitting"></div>
 									</div>
 								</div>
@@ -381,12 +400,22 @@
 
 	<script>
 		$(function() {
-			$("#GP_basetime_div").hide();
-			$("#GP_basepay_div").hide();
-			$("#GP_overtime_div").hide();
-			$("#GP_overpay_div").hide();
-			$("#GP_onepay_div").hide();
-			$("#GP_monthpay_div").hide();
+			if ($("#ch_gp_ca_id").val() != 'parking') {
+				$("#GP_basetime").hide();
+				$("#GP_basepay").hide();
+				$("#GP_overtime").hide();
+				$("#GP_overpay").hide();
+				$("#GP_onepay").hide();
+				$("#GP_monthpay").hide();
+			}
+			if ($("#ch_gp_parking").val() != 'parking') {
+				$("#GP_slot").hide();
+			}
+
+			$("#GP_category").val($("#ch_gp_ca_id").val()).prop("selected",
+					true);
+			$("#GP_parking").val($("#ch_gp_parking").val()).prop("selected",
+					true);
 		});
 
 		$("#GP_image1")
@@ -518,35 +547,35 @@
 						});
 		$("#GP_category").change(function() {
 			if ($("#GP_category option:selected").text() == '주차장') {
-				$("#GP_slot_div").show();
-				$("#GP_basetime_div").show();
-				$("#GP_basepay_div").show();
-				$("#GP_overtime_div").show();
-				$("#GP_overpay_div").show();
-				$("#GP_onepay_div").show();
-				$("#GP_monthpay_div").show();
+				$("#GP_slot").show();
+				$("#GP_basetime").show();
+				$("#GP_basepay").show();
+				$("#GP_overtime").show();
+				$("#GP_overpay").show();
+				$("#GP_onepay").show();
+				$("#GP_monthpay").show();
 				$("#GP_parking_div").hide();
 			} else {
 				if ($("#GP_parking option:selected").text() == '없음') {
-					$("#GP_slot_div").hide();
+					$("#GP_slot").hide();
 				} else {
-					$("#GP_slot_div").show();
+					$("#GP_slot").show();
 				}
-				$("#GP_basetime_div").hide();
-				$("#GP_basepay_div").hide();
-				$("#GP_overtime_div").hide();
-				$("#GP_overpay_div").hide();
-				$("#GP_onepay_div").hide();
-				$("#GP_monthpay_div").hide();
+				$("#GP_basetime").hide();
+				$("#GP_basepay").hide();
+				$("#GP_overtime").hide();
+				$("#GP_overpay").hide();
+				$("#GP_onepay").hide();
+				$("#GP_monthpay").hide();
 				$("#GP_parking_div").show();
 			}
 		});
 
 		$("#GP_parking").change(function() {
 			if ($("#GP_parking option:selected").text() == '없음') {
-				$("#GP_slot_div").hide();
+				$("#GP_slot").hide();
 			} else {
-				$("#GP_slot_div").show();
+				$("#GP_slot").show();
 			}
 		});
 	</script>
@@ -610,6 +639,8 @@
 							}
 						});
 		var marker = new naver.maps.Marker();
+		marker.setPosition(new naver.maps.LatLng($("#GP_lat").val(), $("#GP_long").val()));
+		marker.setMap(map);
 		naver.maps.Event.addListener(map, 'click', function(e) {
 			marker.setPosition(e.coord);
 			marker.setMap(map);
@@ -623,198 +654,3 @@
 
 </html>
 
-
-<%-- <section id="container">
-	<div id="container_box">
-		<h2>굿플 등록</h2>
-
-		<form role="form" method="post" autocomplete="off"
-			enctype="multipart/form-data">
-
-			<div class="inputArea">
-				<label>1차 분류</label> <select class="category1">
-					<option value="">전체</option>
-				</select> <label>2차 분류</label> <select class="category2" name="cateCode">
-					<option value="">전체</option>
-				</select>
-			</div>
-
-			<div class="inputArea">
-				<label for="writer">작성자</label><input type="text" id="userId"
-					name="userId" value="${member.userId}" />
-			</div>
-
-
-			<div id="wrap" class="section">
-				<div id="map" style="width: 50%; height: 600px;"></div>
-				<code id="snippet" class="snippet"></code>
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_name">굿플 이름</label>
-				<!-- 상품명 -->
-				<input type="text" id="GP_name" name="GP_name" />
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_lat">위도</label>
-				<!-- 상품가격 -->
-				<input type="text" id="GP_lat" name="GP_lat" />
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_long">경도</label>
-				<!-- 수량 -->
-				<input type="text" id="GP_long" name="GP_long" />
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_Runtime">영업시간</label>
-				<!-- 수량 -->
-				<input type="text" id="GP_Runtime" name="GP_Runtime" />
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_content">내용</label>
-				<textarea rows="5" cols="50" id="GP_content" name="GP_content"></textarea>
-			</div>
-
-			<div class="inputArea">
-				<label for="GP_image">이미지</label> <input type="file" id="GP_image"
-					name="file" />
-				<div class="select_img">
-					<img src="" />
-				</div>
-
-				<div class="inputArea">
-					<label for="GP_restday">정기 휴무일</label>
-					<!-- 수량 -->
-					<input type="text" id="GP_restday" name="GP_restday" />
-				</div>
-
-				<div class="inputArea">
-					<label for="GP_parking">주차 가능</label>
-					<!-- 수량 -->
-					<input type="text" id="GP_parking" name="GP_parking" />
-				</div>
-
-				<script>
-							$("#GP_image")
-									.change(
-											function() {
-												var image = $("#GP_image")
-														.val();
-												if (image.includes(".png")
-														|| image
-																.includes(".jpg")
-														|| image
-																.includes(".jpeg")) {
-													if (this.files
-															&& this.files[0]) {
-
-														var reader = new FileReader;
-														reader.onload = function(
-																data) {
-															$(".select_img img")
-																	.attr(
-																			"src",
-																			data.target.result)
-																	.width(500);
-														}
-														reader
-																.readAsDataURL(this.files[0]);
-													}
-												} else {
-													alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
-													$(".select_img img")
-															.removeAttr("src");
-													$("#GP_image").val("");
-												}
-
-											});
-						</script>
-
-				 <%=request.getRealPath("/") %>
-			</div>
-
-
-
-			<script id="code">
-						//지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.
-						/* var mapDiv = document.getElementById('map'); // 'map'으로 선언해도 동일
-						
-						//옵션 없이 지도 객체를 생성하면 서울 시청을 중심으로 하는 16 레벨의 지도가 생성됩니다.
-						var map = new naver.maps.Map(mapDiv); */
-						var map = new naver.maps.Map('map', {
-							center : new naver.maps.LatLng(35.896061,
-									128.621659),
-							zoom : 16,
-							mapTypeId : naver.maps.MapTypeId.NORMAL
-						});
-
-						var infowindow = new naver.maps.InfoWindow();
-
-						function onSuccessGeolocation(position) {
-							/* var location = new naver.maps.LatLng(position.coords.latitude,
-							                                     position.coords.longitude); */
-							var location = new naver.maps.LatLng(35.896061,
-									128.621659);
-
-							map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
-							map.setZoom(16); // 지도의 줌 레벨을 변경합니다.
-
-							/* infowindow.setContent('<div style="padding:20px;">' + 'geolocation.getCurrentPosition() 위치' + '</div>');
-
-							infowindow.open(map, location); */
-							console.log('Coordinates: ' + location.toString());
-						}
-
-						//지오로케이션 안내문
-						/* function onErrorGeolocation() {
-						    var center = map.getCenter();
-
-						    infowindow.setContent('<div style="padding:20px;">' +
-						        '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
-
-						    infowindow.open(map, center);
-						} */
-
-						$(window)
-								.on(
-										"load",
-										function() {
-											if (navigator.geolocation) {
-												/**
-												 * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
-												 * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
-												 * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
-												 */
-												navigator.geolocation
-														.getCurrentPosition(
-																onSuccessGeolocation,
-																onErrorGeolocation);
-											} else {
-												var center = map.getCenter();
-												infowindow
-														.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
-												infowindow.open(map, center);
-											}
-										});
-						var marker = new naver.maps.Marker();
-						naver.maps.Event.addListener(map, 'click', function(e) {
-							marker.setPosition(e.coord);
-							marker.setMap(map);
-							console.log("위도 경도" + e.coord);
-							$('input#GP_lat').val(e.coord.y);
-							$('input#GP_long').val(e.coord.x);
-						});
-					</script>
-
-			<div class="inputArea">
-				<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
-			</div>
-
-		</form>
-
-	</div>
-</section> --%>
