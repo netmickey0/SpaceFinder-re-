@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shopping.mappers.pakingMapper">
+<mapper namespace="com.shopping.mappers.parkingMapper">
 	<!--  주차영역 셀렉트 -->
-	<select id="showLocate" resultType="com.shopping.domain.ParkingVO">
+	<select id="showLocateList" resultType="com.shopping.domain.ParkingVO">
 	select locate, isUse 
 	from ParkingSpace
 	</select>

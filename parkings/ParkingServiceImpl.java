@@ -2,11 +2,17 @@ package com.shopping.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
 import com.shopping.domain.ParkingVO;
 import com.shopping.persistence.ParkingDAO;
 
+@Service
 public class ParkingServiceImpl implements ParkingService{
 
+	@Inject
 	private ParkingDAO dao;
 	
 	@Override
