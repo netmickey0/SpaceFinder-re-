@@ -5,6 +5,7 @@ import java.util.List;
 import com.shopping.domain.GoodPListVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
+import com.shopping.domain.GpUpdateVO;
 import com.shopping.domain.GpViewVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -30,7 +31,7 @@ public interface GpService {
 	public GpViewVO gpView(int GP_id) throws Exception;
 	
 	//굿플 업데이트
-	public void GP_up(GoodPVO vo) throws Exception;
+	public void GP_up(GpUpdateVO vo) throws Exception;
 	
 	//굿플 삭제
 	public void GP_del(int GP_id) throws Exception;

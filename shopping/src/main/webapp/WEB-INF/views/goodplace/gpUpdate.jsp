@@ -136,6 +136,7 @@
 										value="${gpView.GP_category }" required /> <input type="text"
 										name="ch_gp_parking" id="ch_gp_parking"
 										value="${gpView.GP_parking }" required />
+										<input type="text" name="GP_id" id="GP_id" value="${gpView.GP_id }" />
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
@@ -253,7 +254,7 @@
 								</div>
 								
 								<!-- <button id="image_update">이미지 변경하기</button> -->
-								<div class="col-md-12" id="GP_image_div">
+								<!-- <div class="col-md-12" id="GP_image_div">
 									<div class="form-group">
 										<label class="label" for="GP_image1">대표이미지</label> <input
 											class="form-control" type="file" id="GP_image1"
@@ -286,7 +287,7 @@
 											<img src="" />
 										</div>
 									</div>
-								</div>
+								</div> -->
 
 
 								<div class="col-md-6" id="GP_slot">
@@ -639,6 +640,8 @@
 							}
 						});
 		var marker = new naver.maps.Marker();
+		map.setCenter(new naver.maps.LatLng($("#GP_lat").val(), $("#GP_long").val()));
+		map.setZoom(16);
 		marker.setPosition(new naver.maps.LatLng($("#GP_lat").val(), $("#GP_long").val()));
 		marker.setMap(map);
 		naver.maps.Event.addListener(map, 'click', function(e) {

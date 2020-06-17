@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -131,27 +131,35 @@
 							<div class="carousel-testimony owl-carousel ftco-owl">
 								<div class="item">
 									<img src="http://54.180.89.92:8080/img${gpView.GP_image1}"
-										alt="" class="img-fluid">
+										alt="" class="img-fluid" width="200">
 								</div>
 								<div class="item">
 									<img src="http://54.180.89.92:8080/img${gpView.GP_image2}"
-										alt="" class="img-fluid">
+										alt="" class="img-fluid" width="200">
 								</div>
 								<div class="item">
 									<img src="http://54.180.89.92:8080/img${gpView.GP_image3}"
-										alt="" class="img-fluid">
+										alt="" class="img-fluid" width="200">
 								</div>
 								<div class="item">
 									<img src="http://54.180.89.92:8080/img${gpView.GP_image4}"
-										alt="" class="img-fluid">
+										alt="" class="img-fluid" width="200">
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<p>
-						카테고리 : ${gpView.gp_ca_name }<br>주차장 유무 : ${gpView.GP_parking }<br>영업시간
-						: ${gpView.GP_Runtime }<br>정기 휴일 : ${gpView.GP_restday }<br>
+						카테고리 : ${gpView.gp_ca_name }<br>
+						<c:if test="${gpView.GP_category ne 'parking' }">
+						주차장 유무 :
+						<c:choose>
+								<c:when test="${gpView.GP_parking eq 'parking'}"> 자체주차장 있음</c:when>
+								<c:when test="${gpView.GP_parking eq 'none'}"> 없음</c:when>
+							</c:choose>
+						</c:if>
+						<br>영업시간 : ${gpView.GP_Runtime }<br>정기 휴일 :
+						${gpView.GP_restday }<br>
 						<c:if
 							test="${gpView.GP_parking eq 'parking' and gpView.GP_category ne 'parking' }">
 						주차 면수 : ${gpView.GP_slot }
@@ -162,16 +170,24 @@
 					</p>
 					<br> <br>
 					<p>${gpView.GP_content }</p>
+					
+					<label class="label">위치</label>
+					<div id="map" style="width: 100%; height: 400px; margin: 10px"></div>
+					<code id="snippet" class="snippet"></code>
+
 					<div
 						style="display: flex; align-items: flex-end; justify-content: flex-end;">
 						<button id="updategoodplace" class="btn btn-primary" type="button"
-							style="margin-right: 10px" onclick="location.href='/goodplace/gpUpdate?GP_id='+${gpView.GP_id }">수정</button>
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/gpUpdate?GP_id='+${gpView.GP_id }">수정</button>
 
 						<button id="deletegoodplace" class="btn btn-primary" type="button"
-							style="margin-right: 10px" onclick="location.href='/goodplace/gpDelete?GP_id='+${gpView.GP_id }">삭제</button>
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/gpDelete?GP_id='+${gpView.GP_id }">삭제</button>
 
 						<button id="movemain" class="btn btn-primary" type="button"
-							style="margin-right: 10px" onclick="location.href='/goodplace/main'">목록</button>
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/main'">목록</button>
 					</div>
 
 
@@ -195,7 +211,10 @@
 									<li class="comment">
 										<div class="comment-body">
 											<h3>${reply.username }</h3>
-											<div class="meta"><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${reply.GP_date }"/></div>
+											<div class="meta">
+												<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
+													value="${reply.GP_date }" />
+											</div>
 											<p>${reply.GP_content }</p>
 											<p>
 												<a href="#" class="reply">Reply</a>
@@ -345,13 +364,17 @@
 							}
 						});
 		var marker = new naver.maps.Marker();
-		naver.maps.Event.addListener(map, 'click', function(e) {
+		map.setCenter(new naver.maps.LatLng(${gpView.GP_lat}, ${gpView.GP_long}));
+		map.setZoom(16);
+		marker.setPosition(new naver.maps.LatLng(${gpView.GP_lat}, ${gpView.GP_long}));
+		marker.setMap(map);
+		/* naver.maps.Event.addListener(map, 'click', function(e) {
 			marker.setPosition(e.coord);
 			marker.setMap(map);
 			console.log("위도 경도" + e.coord);
 			$('input#GP_lat').val(e.coord.y);
 			$('input#GP_long').val(e.coord.x);
-		});
+		}); */
 	</script>
 
 </body>

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.shopping.domain.GoodPListVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
+import com.shopping.domain.GpUpdateVO;
 import com.shopping.domain.GpViewVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -164,50 +165,49 @@ public class GoodplaceController {
 
 	// 굿플 업데이트
 	@RequestMapping(value = "/gpUpdate", method = RequestMethod.POST)
-	public String postGoodpUpdate(GoodPVO vo, MultiFiles multiFiles, HttpServletRequest req) throws Exception {
+	public String postGoodpUpdate(GpUpdateVO vo, MultiFiles multiFiles, HttpServletRequest req) throws Exception {
 
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
+//		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+//		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+//		String fileName = null;
 
-		int i = 0;
-		for (MultipartFile file : multiFiles.getGP_image()) {
-			if (file != null) {
-				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
-						ymdPath);
-			} else {
-				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-			}
-			switch (i) {
-			case 0:
-				vo.setGP_image1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg1(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
-						+ fileName);
-				break;
-			case 1:
-				vo.setGP_image2(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg2(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
-						+ fileName);
-				break;
-			case 2:
-				vo.setGP_image3(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg3(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
-						+ fileName);
-				break;
-			case 3:
-				vo.setGP_image4(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-				vo.setGP_ThumbImg4(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
-						+ fileName);
-				break;
-			}
-			i++;
-		}
+//		int i = 0;
+//		for (MultipartFile file : multiFiles.getGP_image()) {
+//			if (file != null) {
+//				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
+//						ymdPath);
+//			} else {
+//				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+//			}
+//			switch (i) {
+//			case 0:
+//				vo.setGP_image1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//				vo.setGP_ThumbImg1(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+//						+ fileName);
+//				break;
+//			case 1:
+//				vo.setGP_image2(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//				vo.setGP_ThumbImg2(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+//						+ fileName);
+//				break;
+//			case 2:
+//				vo.setGP_image3(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//				vo.setGP_ThumbImg3(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+//						+ fileName);
+//				break;
+//			case 3:
+//				vo.setGP_image4(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+//				vo.setGP_ThumbImg4(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+//						+ fileName);
+//				break;
+//			}
+//			i++;
+//		}
 
 		String runtime = "평일 : " + req.getParameter("weekday_on_time") + " ~ " + req.getParameter("weekday_close_time")
 				+ "/" + "주말(휴일) : " + req.getParameter("weekend_on_time") + " ~ "
 				+ req.getParameter("weekend_close_time");
 		vo.setGP_Runtime(runtime);
-		vo.setGP_REF_ID("");
 
 		gpService.GP_up(vo);
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.shopping.domain.GoodPListVO;
 import com.shopping.domain.GoodPVO;
 import com.shopping.domain.GpCategoryVO;
+import com.shopping.domain.GpUpdateVO;
 import com.shopping.domain.GpViewVO;
 import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
@@ -60,7 +61,7 @@ public class GpDAOImpl implements GpDAO {
 	}
 
 	@Override
-	public void GP_up(GoodPVO vo) throws Exception {
+	public void GP_up(GpUpdateVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		sql.update(namespace + ".GP_up", vo);
 	}
