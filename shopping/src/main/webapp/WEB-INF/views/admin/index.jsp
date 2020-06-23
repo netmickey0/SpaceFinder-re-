@@ -5,131 +5,90 @@
 
 <html>
 <head>
-<title>Shopping Admin</title>
+<title>Space Finder</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+	rel="stylesheet">
 
-<link rel="stylesheet" href="/resources/bootstrap/bootstrap.min.css">
 <link rel="stylesheet"
-	href="/resources/bootstrap/bootstrap-theme.min.css">
-<script src="/resources/bootstrap/bootstrap.min.js"></script>
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<style>
-body {
-	font-family: '맑은 고딕', verdana;
-	padding: 0;
-	margin: 0;
-}
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/animate.css">
 
-ul {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/magnific-popup.css">
 
-div#root {
-	width: 90%;
-	margin: 0 auto;
-}
-
-header#header {
-	font-size: 60px;
-	padding: 20px 0;
-}
-
-header#header h1 a {
-	color: #000;
-	font-weight: bold;
-}
-
-nav#nav {
-	padding: 10px;
-	text-align: right;
-}
-
-nav#nav ul li {
-	display: inline-block;
-	margin-left: 10px;
-}
-
-section#container {
-	padding: 20px 0;
-	border-top: 2px solid #eee;
-	border-bottom: 2px solid #eee;
-}
-
-section#container::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-aside {
-	float: left;
-	width: 200px;
-}
-
-div#container_box {
-	float: right;
-	width: calc(100% - 200px - 20px);
-}
-
-aside ul li {
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-aside ul li a { 
-	display: block;
-	width:100%;
-	padding:10px 0;
-}
-
-aside ul li a:hover {
-	background: #eee;
-}
-
-footer#footer {
-	background: #f9f9f9;
-	padding: 20px;
-}
-
-footer#footer ul li {
-	display: inline-block;
-	margin-right: 10px;
-}
-</style>
-
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/flaticon.css">
+<link rel="stylesheet"
+	href="/resources/publishing-company-master/css/style.css">
 </head>
 <body>
-	<div id="root">
-		<header id="header">
-			<div id="header_box">
-				<%@ include file="include/header.jsp"%>
-			</div>
-		</header>
+	<header>
+		<%@ include file="../include/header.jsp"%>
+	</header>
 
-		<nav id="nav">
-			<div id="nav_box">
-				<%@ include file="include/nav.jsp"%>
-			</div>
-		</nav>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<%@ include file="include/nav.jsp"%>
+	</nav>
 
-		<section id="container">
-			<aside>
-				<%@ include file="include/aside.jsp"%>
-			</aside>
-			<div id="container_box">본문</div>
-		</section>
+	<section class="hero-wrap"
+		style="background-image: url('/resources/publishing-company-master/images/bg_2.jpg');"
+		data-stellar-background-ratio="0.5">
+		<%@ include file="include/section.jsp"%>
+	</section>
 
-		<footer id="footer">
-			<div id="footer_box">
-				<%@ include file="include/footer.jsp"%>
-			</div>
-		</footer>
+	<footer id="footer">
+		<div id="footer_box">
+			<%@ include file="../include/footer.jsp"%>
+		</div>
+	</footer>
 
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<%-- <P>  The time on the server is ${serverTime}. </P> --%>
+	<script src="/resources/publishing-company-master/js/jquery.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/resources/publishing-company-master/js/popper.min.js"></script>
+	<script src="/resources/publishing-company-master/js/bootstrap.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery.easing.1.3.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery.waypoints.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery.stellar.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/owl.carousel.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery.magnific-popup.min.js"></script>
+	<script
+		src="/resources/publishing-company-master/js/jquery.animateNumber.min.js"></script>
+	<script src="/resources/publishing-company-master/js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<!-- ?????구글맵???? -->
+	<script src="/resources/publishing-company-master/js/google-map.js"></script>
+	<script src="/resources/publishing-company-master/js/main.js"></script>
 </body>
 </html>
