@@ -55,26 +55,24 @@
 		<%@ include file="../include/nav.jsp"%>
 	</nav>
 
-	<section>
-		<section class="hero-wrap hero-wrap-2"
-			style="background-image: url('/resources/publishing-company-master/images/gp_1.jpg');"
-			data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row no-gutters slider-text align-items-center justify-content-center">
-					<div class="col-md-9 ftco-animate mb-0 text-center">
-						<p class="breadcrumbs mb-0">
-							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder<i
-									class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플레이스
-								<i class="fa fa-chevron-right"></i>
-							</span>
-						</p>
-						<h1 class="mb-0 bread" style="color: white;">내가 만든 굿플레이스</h1>
-					</div>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('/resources/publishing-company-master/images/gp_1.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate mb-0 text-center">
+					<p class="breadcrumbs mb-0">
+						<span class="mr-2"><a href="/" style="color: white;">SpaceFinder<i
+								class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플레이스
+							<i class="fa fa-chevron-right"></i>
+						</span>
+					</p>
+					<h1 class="mb-0 bread" style="color: white;">내가 만든 굿플레이스</h1>
 				</div>
 			</div>
-		</section>
+		</div>
 	</section>
 
 	<section class="ftco-section ftco-degree-bg">
@@ -121,303 +119,36 @@
 
 				<div class="col-lg-9 ftco-animate">
 					<div class="row">
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(/resources/publishing-company-master/images/food_1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
+
+						<c:forEach items="${gplist}" var="gplist">
+							<div class="col-md-4 d-flex">
+								<div class="book-wrap">
+									<div class="img d-flex justify-content-end w-100"
+										style="background-image: url(http://54.180.89.92:8080/img${gplist.GP_ThumbImg1});">
+										<div class="in-text">
+											<a href="#"
+												class="icon d-flex align-items-center justify-content-center"
+												data-toggle="tooltip" data-placement="left"
+												title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
+											</a> <a href="#"
+												class="icon d-flex align-items-center justify-content-center"
+												data-toggle="tooltip" data-placement="left"
+												title="Quick View"> <span class="flaticon-search"></span>
+											</a>
+										</div>
+									</div>
+									<div class="text px-4 py-3 w-100">
+										<p class="mb-2">
+											<span class="price">조회수 : ${gplist.GP_click}</span>
+										</p>
+										<h2>
+											<a href="/goodplace/gpView?GP_id=${gplist.GP_id}">${gplist.GP_name }</a>
+										</h2>
+										<span class="position">${gplist.username }(${gplist.userId })</span>
 									</div>
 								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
 							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 d-flex">
-							<div class="book-wrap">
-								<div class="img d-flex justify-content-end w-100"
-									style="background-image: url(images/book-1.jpg);">
-									<div class="in-text">
-										<a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Add to Wishlist"> <span class="flaticon-heart-1"></span>
-										</a> <a href="#"
-											class="icon d-flex align-items-center justify-content-center"
-											data-toggle="tooltip" data-placement="left"
-											title="Quick View"> <span class="flaticon-search"></span>
-										</a>
-									</div>
-								</div>
-								<div class="text px-4 py-3 w-100">
-									<p class="mb-2">
-										<span class="price">조회수 : 00</span>
-									</p>
-									<h2>
-										<a href="#">여기가 제목이 올 부분!!!</a>
-									</h2>
-									<span class="position">작성자 : 닉네임임임</span>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 
 					</div>
 					<div class="row mt-5">

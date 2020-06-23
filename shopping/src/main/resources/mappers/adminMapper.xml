@@ -66,49 +66,45 @@
  where gdsNum = #{gdsNum}
 </delete>
 
-<!-- 주차장 등록 -->
+<!-- 굿플 등록 -->
 <insert id="GP_reg">
  insert into GoodPlace (GP_id, userId, GP_name, GP_category, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay)
+       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4)
      values (GoodPlace_seq.nextval, #{userId}, #{GP_name}, #{GP_category}, #{GP_lat}, #{GP_long},
-        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking}, #{GP_image1}, #{GP_image2}, #{GP_image3}, #{GP_image4}, #{GP_slot}, #{GP_basetime}, #{GP_basepay}, #{GP_overtime}, #{GP_overpay}, #{GP_onepay}, #{GP_monthpay})
+        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking}, #{GP_image1}, #{GP_image2}, #{GP_image3}, #{GP_image4}, #{GP_slot}, #{GP_basetime}, #{GP_basepay}, #{GP_overtime}, #{GP_overpay}, #{GP_onepay}, #{GP_monthpay}, #{GP_ThumbImg1}, #{GP_ThumbImg2}, #{GP_ThumbImg3}, #{GP_ThumbImg4})
 </insert>
 
 <!-- 주차장 목록 --> 
-<select id="gplist" resultType="com.shopping.domain.GoodPVO">
+<select id="gplist" resultType="com.shopping.domain.GoodPListVO">
  select
-  GP_id, userId, GP_name, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_image, GP_restday, GP_parking
-    from GOODPLACE
+ g.GP_id, g.userId, m.username, g.GP_name, g.GP_category, GP_lat, GP_long,
+       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4
+    from GOODPLACE g, tbl_member m
+    where GP_REF_ID is null and g.userId = m.userId
         order by TO_NUMBER(GP_id) DESC
 </select>
-
 
 <!-- 굿플 조회 -->
 <select id="gpView" resultType="com.shopping.domain.GpViewVO">
 	select
-g.GP_id, g.userId, g.GP_name, g.GP_lat, g.GP_long,
-       g.GP_Runtime, g.GP_content, g.GP_image, g.GP_restday, g.GP_parking
-         from GOODPLACE g
-<!--              inner join goods_category c -->
-<!--                  on g.cateCode = c.cateCode            -->
-            where g.GP_id = #{GP_id}
+g.GP_id, g.userId, g.GP_name, g.GP_category, c.gp_ca_name, g.GP_lat, g.GP_long,
+       g.GP_Runtime, g.GP_content, g.GP_restday, g.GP_parking , g.GP_image1, g.GP_image2, g.GP_image3, g.GP_image4, g.GP_slot, g.GP_basetime, g.GP_basepay, g.GP_overtime, g.GP_overpay, g.GP_onepay, g.GP_monthpay
+         from GOODPLACE g, gp_category c
+            where g.GP_id = #{GP_id} and g.GP_category = c.gp_ca_id
 </select>
 
 <!-- 댓글 작성 -->
 <insert id="registReply">
- insert into GP_reply (GP_id, userId, repNum, repCon)
-     values (#{GP_id}, #{userId}, GP_reply_seq.nextval, #{repCon})
+ insert into GoodPlace (GP_id, userId, GP_content, GP_REF_ID)
+     values (GoodPlace_seq.nextval, #{userId}, #{GP_content}, #{GP_REF_ID})
 </insert>
 
 <!-- 댓글 리스트 -->
 <select id="replyList" resultType="com.shopping.domain.ReplyListVO">
  select
-     r.GP_id, r.userId, r.repNum, r.repCon, r.repDate, m.userName
- from GP_reply r
-     inner join tbl_member m
-         on r.userId = m.userId
-     where GP_id = #{GP_id}
+     g.GP_id, m.username, g.GP_content, g.GP_date
+ from GoodPlace g, tbl_member m
+     where GP_REF_ID = #{GP_id} and g.userId = m.userId
 </select>
 
 <!-- GP카테고리 리스트 -->
@@ -117,4 +113,37 @@ select
  gp_ca_id, gp_ca_name
  from gp_category
 </select>
+
+<update id="GP_up">
+update GoodPlace set 
+GP_name = #{GP_name}, 
+GP_category = #{GP_category}, 
+GP_lat = #{GP_lat},
+GP_long = #{GP_long},
+GP_Runtime = #{GP_Runtime}, 
+GP_content = #{GP_content}, 
+GP_restday = #{GP_restday}, 
+GP_parking = #{GP_parking}, 
+<!-- GP_image1 = #{GP_image1}, 
+GP_image2 = #{GP_image2}, 
+GP_image3 = #{GP_image3}, 
+GP_image4 = #{GP_image4},  -->
+GP_slot = #{GP_slot}, 
+GP_basetime = #{GP_basetime}, 
+GP_basepay = #{GP_basepay}, 
+GP_overtime = #{GP_overtime}, 
+GP_overpay = #{GP_overpay}, 
+GP_onepay = #{GP_onepay}, 
+GP_monthpay = #{GP_monthpay}
+<!-- ,GP_ThumbImg1 = #{GP_ThumbImg1},
+GP_ThumbImg2 = #{GP_ThumbImg2},
+GP_ThumbImg3 = #{GP_ThumbImg3},
+GP_ThumbImg4 = #{GP_ThumbImg4} -->
+where GP_id = #{GP_id}
+
+</update>
+
+<delete id="GP_del">
+delete from GoodPlace where GP_id = #{GP_id} or GP_REF_ID = #{GP_id}
+</delete>
 </mapper>
