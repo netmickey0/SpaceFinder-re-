@@ -32,12 +32,12 @@ public class ParkingController {
 		logger.info("show");
 		
 		List<ParkingVO> list = service.showLocateList();
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map =  new HashMap<String, String>();
 		
 		for (int i=0; i<5; i++) {
 			map.put(list.get(i).getlocate(), list.get(i).getIsUse());
 		}
-		
+
 		return map;
 	}
 	
