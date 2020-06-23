@@ -33,7 +33,7 @@
   </button>
   <div class="collapse navbar-collapse" id="ftco-nav">
     <ul class="navbar-nav m-auto">
-    	<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+    	<li class="nav-item active"><a href="/" class="nav-link">홈</a></li>
     	<li class="nav-item"><a href="/goodplace/main" class="nav-link">굿플레이스</a></li>
     	<li class="nav-item"><a href="#" class="nav-link">핫플레이스</a></li>
     	<li class="nav-item"><a href="#" class="nav-link">플레이스클럽</a></li>
